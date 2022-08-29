@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let headName of tableHeaders" [ngClass]="'head-' + headName.head.toLowerCase()">{{ headName.head }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of tableData">
+      <td *ngFor="let headName of tableHeaders">
+        <ng-container *ngIf="headName.head === 'Image'">
+          <img class="image" [src]="book[headName.fieldName]">
+        </ng-container>
+        <ng-container *ngIf="headName.head !== 'Action' && headName.head !== 'Image'">
+          {{ book[headName.fieldName] }}
+        </ng-container>
+        <ng-container *ngIf="headName.head === 'Action'">
+          <app-button [text]="'edit'" (onClick)="edit(book)"></app-button>
+          <app-button
+            [text]="'delete'"
+            [btnClass]="'delete-btn'"
+            (onClick)="delete(book)"
+          ></app-button>
+        </ng-container>
+      </td>
+    </tr>
+  </tbody>
+</table>

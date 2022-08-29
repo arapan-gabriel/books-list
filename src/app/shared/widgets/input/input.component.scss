@@ -1,0 +1,12 @@
+input {
+  background-color: var(--search-bg);
+  color: var(--search-text);
+  border: 1px solid var(--input-border);
+  border-radius: 3px;
+  padding: 7px;
+}
+
+input:focus {
+  outline: none !important;
+  border: 2px solid var(--input-border-focus);
+}

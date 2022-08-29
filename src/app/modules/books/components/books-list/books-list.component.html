@@ -1,0 +1,47 @@
+<ng-container *ngIf="isLoading$ | async">
+  <app-loading [text]="'Loading...'"></app-loading>
+</ng-container>
+
+<div class="books-list">
+  <ng-container *ngIf="!(isLoading$ | async)">
+    <ng-container *ngIf="isBookModal$ | async">
+      <app-book-modal
+        (emitAction)="doModalAction($event)"
+        [data]="modalData"
+      ></app-book-modal>
+    </ng-container>
+
+    <div class="table-line">
+      <div class="pagination">
+        <ul>
+          <li class="page-item"><i class="prev-page arrow left" (click)="pagination.prevPage()"></i></li>
+          <input
+            #pagination="pagination"
+            appPagination
+            [totalPages]="totalPages"
+            (emitPageValue)="onPageChange($event)"
+            type="number"
+            min="1"
+            max="10"
+            value="1"
+          />
+          <li class="page-item"><i class="next-page arrow right" (click)="pagination.nextPage()"></i></li>
+        </ul>
+      </div>
+
+      <app-button
+        [text]="'Add'"
+        (onClick)="tableAction({ action: 'row-add' })"
+        [btnClass]="'btn-margin'"
+      ></app-button>
+    </div>
+
+    <app-table
+      [tableHeaders]="tableHeaders"
+      [tableData]="books"
+      (onEdit)="tableAction($event)"
+      (onDelete)="tableAction($event)"
+    ></app-table>
+  </ng-container>
+
+</div>

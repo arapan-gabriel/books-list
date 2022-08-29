@@ -1,0 +1,17 @@
+.btn {
+  border: none;
+  border-radius: 3px;
+  padding: 5px 25px;
+  background-color: var(--main-color);
+  color: var(--button-color);
+  cursor: pointer;
+}
+
+.delete-btn {
+  margin-left: 10px;
+  background-color: var(--button-delete-bg);
+}
+
+.btn-margin {
+  margin-bottom: 10px;
+}
