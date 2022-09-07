@@ -14,8 +14,10 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { LoadingComponent } from './shared/components/loading/loading.component';
 import { BooksListComponent } from './modules/books/components/books-list/books-list.component';
 import { BookModalComponent } from "./modules/books/components/book-modal/book-modal.component";
-import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PaginationDirective } from './shared/directives/pagination.directive';
+import { SearchComponent } from './shared/components/search/search.component';
+import { FilterComponent } from './shared/components/filter/filter.component';
 
 @NgModule({
   declarations: [
@@ -27,20 +29,23 @@ import { PaginationDirective } from './shared/directives/pagination.directive';
     InputComponent,
     LoadingComponent,
     BookModalComponent,
-    PaginationDirective
+    PaginationDirective,
+    SearchComponent,
+    FilterComponent
   ],
-  imports: [
-    BrowserModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
-      autoPause: true
-    }),
-    AppRoutingModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        StoreModule.forRoot({}, {}),
+        EffectsModule.forRoot([]),
+        StoreDevtoolsModule.instrument({
+            maxAge: 25,
+            logOnly: environment.production,
+            autoPause: true
+        }),
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -29,6 +29,15 @@
         </ul>
       </div>
 
+      <div class="filter">
+        <app-search (emitSearchValue)="doSearch($event)"></app-search>
+
+        <app-filter
+          [list]="this.filters"
+          (emitCheckedFilters)="handleCheckedFilters($event)">
+        </app-filter>
+      </div>
+
       <app-button
         [text]="'Add'"
         (onClick)="tableAction({ action: 'row-add' })"

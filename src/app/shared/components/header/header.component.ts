@@ -1,9 +1,6 @@
 import { Component, Inject, Input, OnInit, Renderer2 } from '@angular/core';
 import { DOCUMENT } from "@angular/common";
-import { Store } from "@ngrx/store";
 import { Theme } from "../../../app.component";
-import { AppStateInterface } from "../../../appState.interface";
-import { setSearchValue } from "../../../modules/books/store/books.actions";
 
 @Component({
   selector: 'app-header',
@@ -16,8 +13,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
-    private renderer: Renderer2,
-    private store: Store<AppStateInterface>
+    private renderer: Renderer2
   ) { }
 
   ngOnInit() {
@@ -35,10 +31,6 @@ export class HeaderComponent implements OnInit {
         ? this.theme = 'dark-theme'
         : this.theme = 'light-theme'
     );
-  }
-
-  inputValue(value: string) {
-    this.store.dispatch(setSearchValue({ value }));
   }
 
 }

@@ -13,6 +13,16 @@ export const isLoadingSelector = createSelector(
   (state) => state.isLoading
 );
 
+export const  byFilterSelector = createSelector(
+  selectFeature,
+  (state) => state.byFilters
+)
+
+export const  filterSelector = createSelector(
+  selectFeature,
+  (state) => state.filters
+)
+
 export const booksSelector = createSelector(
   selectFeature,
   (state) => state.books

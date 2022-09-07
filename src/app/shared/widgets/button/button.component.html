@@ -2,4 +2,5 @@
   class="btn"
   [ngClass]="btnClass"
   (click)="eventEmit()"
+  [disabled]="disabled"
 >{{ text.toUpperCase() }}</button>

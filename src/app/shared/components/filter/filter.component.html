@@ -1,0 +1,25 @@
+<div>
+  <div>
+<!--    <button class="drop-toggle" (click)="showDropDown = !showDropDown" [disabled]="list.length < 1">-->
+<!--      <span *ngIf="checkedList.length <= 0">Select</span>-->
+<!--      <span *ngIf="checkedList.length > 0">{{ checkedList.join(', ') }}</span>-->
+<!--      <i class="fa fa-angle-down"></i>-->
+<!--    </button>-->
+    <app-button
+      [text]="checkedList.length <= 0 ? 'Select genre' : checkedList.join(', ')"
+      [btnClass]="'btn-filter'"
+      (onClick)="showDropDown = !showDropDown"
+      [disabled]="list.length < 1"
+    ></app-button>
+    <div class="drop-show" *ngIf="showDropDown">
+      <label *ngFor="let a of list" [ngStyle]="a.checked && {'background-color': 'var(--filter-selected-bg)'}">
+        <input
+          type="checkbox"
+          [(ngModel)]="a.checked"
+          (change)="getSelectedValue(a.checked, a.name)"
+        />
+        <span>{{ a.name }}</span>
+      </label>
+    </div>
+  </div>
+</div>

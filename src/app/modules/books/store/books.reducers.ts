@@ -6,6 +6,12 @@ export const initialState: BooksStateInterface = {
   limit: 5,
   page: 1,
   searchValue: null,
+  byFilters: {
+    genre: []
+  },
+  filters: {
+    genre: []
+  },
   books: [],
   totalPages: 0,
   isLoading: false,
@@ -18,6 +24,22 @@ export const reducers = createReducer(
   on(BooksActions.setSearchValue, (state, { value }) => ({
     ...state,
     searchValue: value
+  })),
+  on(BooksActions.setGenreFilters, (state, { genre }) => ({
+    ...state,
+    byFilters: {
+      genre
+    }
+  })),
+  on(BooksActions.getGenreFiltersSuccess, (state, { filters }) => ({
+    ...state,
+    filters: {
+      genre: filters
+    }
+  })),
+  on(BooksActions.getGenreFiltersFailure, (state, { message }) => ({
+    ...state,
+    error: message
   })),
   on(BooksActions.getBooks, (state, action) => ({
     ...state,

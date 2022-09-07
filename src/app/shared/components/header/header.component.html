@@ -1,10 +1,5 @@
 <div class="header">
   <h2>{{ text }}</h2>
-  <app-input
-    [inputType]="'text'"
-    [placeholderText]="'Search'"
-    (emitInputValue)="inputValue($event)"
-  ></app-input>
   <button class="toggle" (click)="switchTheme()">
     {{ theme === 'light-theme' ? 'Switch to dark' : 'Switch to light' }}
   </button>

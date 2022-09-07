@@ -2,8 +2,27 @@ import { createAction, props } from "@ngrx/store";
 import { BookInterface, CreateBookInterface } from "../types/book.interface";
 
 export const setSearchValue = createAction(
-  '[Filter - Set] Set search value',
+  '[Filter-Set] Set search value',
   props<{ value: string }>()
+);
+
+export const setGenreFilters = createAction(
+  '[Filter-Set] Set Genre Filters',
+  props<{ genre: string[] }>()
+);
+
+export const getGenreFilters = createAction(
+  '[Filter-GET] Get Genre Filters'
+);
+
+export const getGenreFiltersSuccess = createAction(
+  '[Filter-GET] Get Genre Filters Success',
+  props<{ filters: string[] }>()
+);
+
+export const getGenreFiltersFailure = createAction(
+  '[Filter-GET] Get Genre Filters Failure',
+  props<{ message: string }>()
 );
 
 export const getBooks = createAction(

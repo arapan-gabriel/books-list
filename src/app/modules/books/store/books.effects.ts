@@ -10,7 +10,7 @@ export class BooksEffects {
     this.actions$.pipe(ofType(BooksActions.getBooks),
       switchMap((props) => {
       return this.booksSvc
-        .getBooks(props.limit, props.page, props.searchValue).pipe(
+        .getBooks(props.limit, props.page, props.searchValue, props.filters).pipe(
           map(res => BooksActions.getBooksSuccess(res)),
           catchError((error) => of(BooksActions.getBooksFailure({ message: error.message })))
         );
@@ -47,6 +47,18 @@ export class BooksEffects {
           map((res: any) => BooksActions.deleteBookSuccess({ message: res.message })),
           catchError((error) => of(BooksActions.deleteBookFailure({ message: error.message })))
         );
+      })
+    )
+  )
+
+  getGenreFilters$ = createEffect(() =>
+    this.actions$.pipe(ofType(BooksActions.getGenreFilters),
+      switchMap(() => {
+        return this.booksSvc
+          .getGenreFilters().pipe(
+            map(res => BooksActions.getGenreFiltersSuccess({ filters: res })),
+            catchError((error) => of(BooksActions.getGenreFiltersFailure({ message: error.message })))
+          );
       })
     )
   )

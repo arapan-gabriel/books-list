@@ -3,9 +3,9 @@ export interface BookInterface extends CreateBookInterface {
 }
 
 export interface CreateBookInterface {
-  image: String | null;
-  title: String;
-  author: String;
-  genre: String;
+  image: string | null;
+  title: string;
+  author: string;
+  genre: string;
 }
 
